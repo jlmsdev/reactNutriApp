@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    const [nutri, setNutri] = useState([]);
+
+    useEffect(()=> {
+
+      function loadApi() {
+        let url = 'https://sujeitoprogramador.com/rn-api/?api=posts';
+
+        fetch(url)
+        .then((r)=> r.json())
+        .then((json)=> {
+          console.log(json);
+          setNutri(json);
+        })
+        .catch(()=> {
+          console.log(`Ops Algo deu Errado`);
+        })
+      }
+
+      loadApi();
+
+    }, [])
+
+
+  return(
+    <div className='container'>
+      <header>
+        <strong>React Nutri</strong>
       </header>
+
+      {nutri.map((item)=> {
+        return (
+          <article className='posts' key={item.id}>
+            <strong className='titulo'>{item.titulo}</strong>
+            <img className='imagemCapa' src={item.capa} alt={item.titulo} />
+            <p className='textoApi'>{item.subtitulo}</p>
+            <a className='btnAcessar'>Acessar</a>
+          </article>
+        );
+      })}
+
     </div>
   );
 }
