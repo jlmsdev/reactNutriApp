@@ -29,7 +29,7 @@ function App() {
   return(
     <div className='container'>
       <header>
-        <strong>React Nutri</strong>
+        <strong>React Nutri App</strong>
       </header>
 
       {nutri.map((item)=> {
