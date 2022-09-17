@@ -38,7 +38,7 @@ function App() {
             <strong className='titulo'>{item.titulo}</strong>
             <img className='imagemCapa' src={item.capa} alt={item.titulo} />
             <p className='textoApi'>{item.subtitulo}</p>
-            <a className='btnAcessar'>Acessar</a>
+            <a href='https://github.com/jlmsdev'  className='btnAcessar'>Acessar</a>
           </article>
         );
       })}
